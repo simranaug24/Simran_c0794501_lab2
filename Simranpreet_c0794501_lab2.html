@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title> Generate tables </title>
+	</head>
+
+		
+	<body>
+		<div id=" buttons">
+			<font size="8" color="green">Final test lab</font><br><br>
+			Number of rows: <input type="text" id="t1" /><br><br>
+			Number of cols: <input type="text" id="t2" /><br><br>
+		
+			<button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+
+		</div>
+
+
+		<button id="b2" onclick="addColumn()">Add Column</button>
+		
+		<button id="b3" onclick="addRow()">Add Row</button>
+
+
+		
+	
+		<div id = "tab">
+	
+	
+	
+		</div>
+	
+	
+		<script language="javascript">
+	
+			function generateTable(){
+				document.getElementById(" buttons").hidden = true; 
+
+
+				// // var x = document.createElement("p");
+				// var text = document.createTextNode("This is the text int the node !");
+				// // x.appendChild(text);
+				// document.getElementById("newPara").appendChild(text);
+				
+				var rows = document.getElementById("t1").value;
+				var cols = document.getElementById("t2").value;
+				var table = document.createElement('table');
+				
+				for (var i = 0; i<rows;i++){
+					var row = document.createElement('tr');
+					row.style.border = "1px dotted red";
+					for ( var j = 0; j< cols ; j++){
+						var column = document.createElement('td');
+						column.style.border = "1px solid green";
+						var text = document.createTextNode(i + '  ' + j);
+						column.appendChild(text);
+						row.appendChild(column);
+
+					}
+					table.appendChild(row);
+				}
+
+				document.getElementById('tab').appendChild(table);
+	
+			}
+
+
+			 function addColumn(){
+				
+
+
+
+			 }
+
+
+
+	
+		</script>
+
+	</body>
+	
+
+</html>
