@@ -5,7 +5,7 @@
 
 		
 	<body>
-		<div id=" buttons">
+		<div id="buttons">
 			<font size="8" color="green">Final test lab</font><br><br>
 			Number of rows: <input type="text" id="t1" /><br><br>
 			Number of cols: <input type="text" id="t2" /><br><br>
@@ -31,22 +31,24 @@
 	
 		<script language="javascript">
 	
+    var totalrows =0;
+                var totalcols = 0;
+
+
 			function generateTable(){
-				document.getElementById(" buttons").hidden = true; 
+				document.getElementById("buttons").hidden = true; 
 
-
-				// // var x = document.createElement("p");
-				// var text = document.createTextNode("This is the text int the node !");
-				// // x.appendChild(text);
-				// document.getElementById("newPara").appendChild(text);
-				
 				var rows = document.getElementById("t1").value;
+                totalrows = rows;
 				var cols = document.getElementById("t2").value;
+                totalcols = cols;
+
 				var table = document.createElement('table');
+
+               table.style.border = "1px solid red";
 				
 				for (var i = 0; i<rows;i++){
 					var row = document.createElement('tr');
-					row.style.border = "1px dotted red";
 					for ( var j = 0; j< cols ; j++){
 						var column = document.createElement('td');
 						column.style.border = "1px solid green";
@@ -62,15 +64,81 @@
 	
 			}
 
-
 			 function addColumn(){
 				
+                if(totalcols == NaN){
+                 totalcols = 1;
+                  totalrows =1 ;
 
+                }
 
+                var cols = parseInt(totalcols) + 1;
+                totalcols = cols;
+                console.log(cols);
 
+				var rows = totalrows;
+
+                console.log(rows);
+				var table = document.createElement('table');
+
+                table.style.border = "1px solid red";
+				
+				for (var i = 0; i<rows;i++){
+					var row = document.createElement('tr');
+					row.style.border = "1px solid red";
+					for ( var j = 0; j< cols ; j++){
+						var column = document.createElement('td');
+						column.style.border = "1px solid green";
+                        column.style.padding = "2px"
+						var text = document.createTextNode('row['+ i + '] col[' + j +']');
+						column.appendChild(text);
+						row.appendChild(column);
+
+					}
+					table.appendChild(row);
+				}
+                document.getElementById('tab').innerHTML = "";
+				document.getElementById('tab').appendChild(table);
 			 }
 
+             function addRow(){
 
+                if(totalcols == NaN){
+                 totalcols = 1;
+                  totalrows =1 ;
+
+                }
+
+                var rows = parseInt(totalrows) + 1;
+                totalrows = rows;
+
+                console.log(rows);
+
+				var cols = totalcols;
+
+                console.log(cols);
+				var table = document.createElement('table');
+				
+                table.style.border = "1px solid red";
+                
+				for (var i = 0; i<rows;i++){
+					var row = document.createElement('tr');
+					row.style.border = "1px solid red";
+					for ( var j = 0; j< cols ; j++){
+						var column = document.createElement('td');
+						column.style.border = "1px solid green";
+						var text = document.createTextNode('row['+ i + '] col[' + j +']');
+						column.appendChild(text);
+						row.appendChild(column);
+
+					}
+					table.appendChild(row);
+				}
+                document.getElementById('tab').innerHTML = "";
+				document.getElementById('tab').appendChild(table);
+
+
+             }
 
 	
 		</script>
